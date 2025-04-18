@@ -16,6 +16,7 @@ import { Meme } from "@/types/meme";
 type Props = {
   activeMeme: Meme;
   isOpen: boolean;
+  memes: Meme[];
   setActiveMeme: (meme: Meme | null) => void;
   onOpenChange: () => void;
 };
@@ -23,6 +24,7 @@ type Props = {
 export default function ModalWindow({
   activeMeme,
   isOpen,
+  memes,
   setActiveMeme,
   onOpenChange,
 }: Props) {
@@ -34,10 +36,8 @@ export default function ModalWindow({
   const oldTitle = useRef(activeMeme.title);
   const oldImage = useRef(activeMeme.image);
 
-  const memes = localStorage.getItem("memes");
-
-  const toggleValue = (event: ChangeEvent<HTMLInputElement>, value: string) => {
-    const array = JSON.parse(memes!);
+  const ToggleValue = (event: ChangeEvent<HTMLInputElement>, value: string) => {
+    const array = memes;
 
     if (value === "title") {
       const i = array.findIndex(
@@ -108,43 +108,45 @@ export default function ModalWindow({
       setLikes(+event.target.value);
     }
 
-    localStorage.setItem("memes", JSON.stringify(array));
+    window.localStorage.setItem("memes", JSON.stringify(array));
   };
 
-  const resetTitle = () => {
-    if (titleError) {
-      const array = JSON.parse(memes!);
-      const el = array.find((el: Meme) => el.id === activeMeme.id);
+  const ResetTitle = () => {
+    const array = memes;
+    const el = array.find((el: Meme) => el.id === activeMeme.id);
 
-      setTitle(oldTitle.current);
-      const newElement = {
-        id: activeMeme.id,
-        title: oldTitle.current,
-        image,
-        likes,
-      };
+    setTitle(oldTitle.current);
+    const newElement = {
+      id: activeMeme.id,
+      title: oldTitle.current,
+      image,
+      likes,
+    };
 
+    if (el) {
       array[el.id] = newElement;
-      localStorage.setItem("memes", JSON.stringify(array));
     }
+
+    window.localStorage.setItem("memes", JSON.stringify(array));
   };
 
-  const resetImage = () => {
-    if (imageError) {
-      const array = JSON.parse(memes!);
-      const el = array.find((el: Meme) => el.id === activeMeme.id);
+  const ResetImage = () => {
+    const array = memes;
+    const el = array.find((el: Meme) => el.id === activeMeme.id);
 
-      setImage(oldImage.current);
-      const newElement = {
-        id: activeMeme.id,
-        title,
-        image: oldImage.current,
-        likes,
-      };
+    setImage(oldImage.current);
+    const newElement = {
+      id: activeMeme.id,
+      title,
+      image: oldImage.current,
+      likes,
+    };
 
+    if (el) {
       array[el.id] = newElement;
-      localStorage.setItem("memes", JSON.stringify(array));
     }
+
+    window.localStorage.setItem("memes", JSON.stringify(array));
   };
 
   return (
@@ -168,7 +170,7 @@ export default function ModalWindow({
                   src={image ? image : "image"}
                   width={300}
                 />
-                <label htmlFor="#id">Id</label>
+                <label htmlFor="id">Id</label>
                 <input
                   disabled
                   id="id"
@@ -176,7 +178,7 @@ export default function ModalWindow({
                   type="text"
                   value={activeMeme.id}
                 />
-                <label htmlFor="#title">Title</label>
+                <label htmlFor="title">Title</label>
                 <input
                   required
                   id="title"
@@ -185,21 +187,21 @@ export default function ModalWindow({
                   name="title"
                   type="text"
                   value={title}
-                  onBlur={() => resetTitle()}
-                  onChange={(event) => toggleValue(event, "title")}
+                  onBlur={() => (titleError ? ResetTitle() : 0)}
+                  onChange={(event) => ToggleValue(event, "title")}
                 />
                 {titleError && (
                   <p className="text-red-600 font-bold">
                     Title must be in range 3 - 100*
                   </p>
                 )}
-                <label htmlFor="#image">Image</label>
+                <label htmlFor="image">Image</label>
                 <input
                   id="image"
                   name="image"
                   value={image}
-                  onBlur={() => resetImage()}
-                  onChange={(event) => toggleValue(event, "image")}
+                  onBlur={() => (imageError ? ResetImage() : 0)}
+                  onChange={(event) => ToggleValue(event, "image")}
                 />
                 {imageError && (
                   <p className="text-red-600 font-bold">
@@ -207,14 +209,14 @@ export default function ModalWindow({
                   </p>
                 )}
 
-                <label htmlFor="#likes">Likes</label>
+                <label htmlFor="likes">Likes</label>
                 <input
                   id="likes"
                   maxLength={2}
                   name="likes"
                   type="text"
                   value={likes}
-                  onChange={(event) => toggleValue(event, "likes")}
+                  onChange={(event) => ToggleValue(event, "likes")}
                 />
               </ModalBody>
               <ModalFooter>
