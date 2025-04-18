@@ -1,5 +1,5 @@
 import Cardlist from "@/components/Cardlist";
-import Nav from "@/components/Navbar";
+import Nav from "@/components/Nav";
 
 export default function Home() {
   return (

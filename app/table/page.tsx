@@ -1,4 +1,4 @@
-import Nav from "@/components/Navbar";
+import Nav from "@/components/Nav";
 import MemeTable from "@/components/Table";
 
 export default function TablePage() {
