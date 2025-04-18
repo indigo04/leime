@@ -1,8 +1,8 @@
 "use client";
 
-import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
+import { Card, CardHeader, CardBody, CardFooter } from "@heroui/react";
 import Link from "next/link";
-import { Image } from "@heroui/image";
+import { Image } from "@heroui/react";
 
 import { Meme } from "@/types/meme";
 
