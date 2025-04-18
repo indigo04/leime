@@ -1,0 +1,62 @@
+[
+    {
+        "id": 0,
+        "title": "LOTR",
+        "image": "https://i.postimg.cc/YSHgC014/70646204-941985542844336-7684805396423801593-n-6611701989.jpg",
+        "likes": 78
+    },
+    {
+        "id": 1,
+        "title": "Answers",
+        "image": "https://www.splashlearn.com/blog/wp-content/uploads/2022/04/Not-sure-test-school-memes.jpg",
+        "likes": 12
+    },
+    {
+        "id": 2,
+        "title": "Monday",
+        "image": "https://community.atlassian.com/forums/image/serverpage/image-id/263783i28EFE632226231DD/image-size/large?v=v2&px=999",
+        "likes": 5
+    },
+    {
+        "id": 3,
+        "title": "Light theme",
+        "image": "https://static.demilked.com/wp-content/uploads/2024/08/funny-spongebob-memes-2.jpeg",
+        "likes": 69
+    },
+    {
+        "id": 4,
+        "title": "Sleep",
+        "image": "https://thunderdungeon.com/wp-content/uploads/2024/10/sleep-memes-top-20241010.jpg",
+        "likes": 99
+    },
+    {
+        "id": 5,
+        "title": "English",
+        "image": "https://englishonline.britishcouncil.org/wp-content/uploads/2021/11/image1-drake-posting-meme.jpg",
+        "likes": 32
+    },
+    {
+        "id": 6,
+        "title": "Theorem",
+        "image": "https://www.splashlearn.com/blog/wp-content/uploads/2022/04/Sad-pepe-school-memes.jpg",
+        "likes": 28
+    },
+    {
+        "id": 7,
+        "title": "Testing",
+        "image": "https://community.atlassian.com/forums/image/serverpage/image-id/210724iD166B5D6C1953DF6/image-dimensions/355x362?v=v2",
+        "likes": 0
+    },
+    {
+        "id": 8,
+        "title": "Combine options",
+        "image": "https://digitalsynopsis.com/wp-content/uploads/2017/12/funny-agency-life-creative-designer-copywriter-memes.jpg",
+        "likes": 81
+    },
+    {
+        "id": 9,
+        "title": "Product manager",
+        "image": "https://community.atlassian.com/forums/image/serverpage/image-id/210882iB4A5D319D458986B/image-size/large?v=v2&px=999",
+        "likes": 67
+    }
+]
